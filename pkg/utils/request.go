@@ -14,6 +14,8 @@ type Options struct {
 	Data   json.RawMessage `json:"data,omitempty"`
 }
 
+const API_URL = "http://100.105.87.12:8080/v1"
+
 func getUA(ua *string) string {
 	if ua != nil {
 		return *ua
@@ -22,12 +24,13 @@ func getUA(ua *string) string {
 }
 
 func Request(url string, options Options) (*http.Response, error) {
+	constructedURL := fmt.Sprintf("%s/%s", API_URL, url)
 	reqBody, err := json.Marshal(options.Data)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal request data: %v", err)
 	}
 
-	req, err := http.NewRequest(options.Method, url, bytes.NewBuffer(reqBody))
+	req, err := http.NewRequest(options.Method, constructedURL, bytes.NewBuffer(reqBody))
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %v", err)
 	}

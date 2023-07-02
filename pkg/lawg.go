@@ -8,8 +8,6 @@ import (
 	"net/http"
 )
 
-const lawgAPIURL = "http://100.105.87.12:8080/v1"
-
 type Lawg struct {
 	Token   string
 	Project string
@@ -41,7 +39,7 @@ func (l *Lawg) Feed(feedName string) *Feed {
 }
 
 func (l *Lawg) Insight(options types.CreateInsight) (*http.Response, error) {
-	url := fmt.Sprintf("%s/projects/%s/insights", lawgAPIURL, l.Project)
+	url := fmt.Sprintf("projects/%s/insights", l.Project)
 	data, err := json.Marshal(options)
 
 	if err != nil {
@@ -58,7 +56,7 @@ func (l *Lawg) Insight(options types.CreateInsight) (*http.Response, error) {
 }
 
 func (l *Lawg) SetInsight(options types.UpdateInsight) (*http.Response, error) {
-	url := fmt.Sprintf("%s/projects/%s/insights/%s", lawgAPIURL, l.Project, options.ID)
+	url := fmt.Sprintf("projects/%s/insights/%s", l.Project, options.ID)
 	data := map[string]interface{}{
 		"value": map[string]interface{}{
 			"set": options.Set,
@@ -80,7 +78,7 @@ func (l *Lawg) SetInsight(options types.UpdateInsight) (*http.Response, error) {
 }
 
 func (l *Lawg) IncInsight(options types.UpdateInsight) (*http.Response, error) {
-	url := fmt.Sprintf("%s/projects/%s/insights/%s", lawgAPIURL, l.Project, options.ID)
+	url := fmt.Sprintf("projects/%s/insights/%s", l.Project, options.ID)
 	data := map[string]interface{}{
 		"value": map[string]interface{}{
 			"increment": options.Increment,
@@ -102,7 +100,7 @@ func (l *Lawg) IncInsight(options types.UpdateInsight) (*http.Response, error) {
 }
 
 func (l *Lawg) DeleteInsight(id string) (*http.Response, error) {
-	url := fmt.Sprintf("%s/projects/%s/insights/%s", lawgAPIURL, l.Project, id)
+	url := fmt.Sprintf("projects/%s/insights/%s", l.Project, id)
 
 	reqOptions := utils.Options{
 		Method: "DELETE",
