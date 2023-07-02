@@ -3,7 +3,7 @@ package lawg
 import (
 	"encoding/json"
 	"fmt"
-	types "github.com/lawgdev/lawg.go/pkg/internal"
+	types "github.com/lawgdev/lawg.go/internal"
 	utils "github.com/lawgdev/lawg.go/pkg/utils"
 	"net/http"
 )
