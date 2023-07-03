@@ -21,7 +21,7 @@ type Feed struct {
 	UserAgent string
 }
 
-func NewLawg(token, project, ua string) *Lawg {
+func NewClient(token, project, ua string) *Lawg {
 	return &Lawg{
 		Token:   token,
 		Project: project,
