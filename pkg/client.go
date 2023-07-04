@@ -14,13 +14,6 @@ type Lawg struct {
 	UA      string
 }
 
-type Feed struct {
-	Token     string
-	Project   string
-	FeedName  string
-	UserAgent string
-}
-
 func NewClient(token, project, ua string) *Lawg {
 	return &Lawg{
 		Token:   token,
@@ -34,7 +27,7 @@ func (l *Lawg) Feed(feedName string) *Feed {
 		Token:     l.Token,
 		Project:   l.Project,
 		FeedName:  feedName,
-		UserAgent: l.UA,
+		UA: l.UA,
 	}
 }
 
