@@ -14,7 +14,7 @@ type Options struct {
 	Data   json.RawMessage `json:"data,omitempty"`
 }
 
-const API_URL = "http://100.105.87.12:8080/v1"
+const API_URL = "https://api.lawg.dev/v1"
 
 func getUA(ua *string) string {
 	if ua != nil {
